@@ -1,0 +1,14 @@
+# Mateusz Salamon
+
+> Angular frontend developer and AI consultant based in Poland. Builds user interfaces for the financial sector and delivers faster with AI-assisted development (Claude Code, MCP, agentic workflows). Open to B2B contracts, remote with EU, UK and US-East overlap.
+
+## Profile
+- Stack: Angular, TypeScript, JavaScript, RxJS, NgRx, NGXS, HTML5, SCSS, Jasmine, Git/GitHub, REST APIs, .NET
+- AI: Claude Code, Model Context Protocol (MCP), Skills, agentic workflows, AI-assisted unit and E2E testing
+- Domains: cloud-based asset management platform used by banks; portfolio monitoring app for a German bank; dealer–bank financial document exchange
+- Certifications: Google UX Design, Microsoft Azure
+- Languages: Polish (native), English
+- Contact: matsal.dev@gmail.com
+
+## Pages
+- [Portfolio](https://[your-domain]/): full profile, experience, skills and FAQ
