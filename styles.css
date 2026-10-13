@@ -3,32 +3,47 @@
    This file holds tokens, base rules and the styles for interactive parts. */
 
 :root {
-  --accent: #A78BFA;
-  --accent2: #FF7A59;
-  --bg: #07070B;
-  --surface: #0E0E14;
-  --ink: #F4F4F7;
-  --muted: #A1A1B0;
-  --faint: #8B8B9A;
+  --accent: #a78bfa;
+  --accent2: #ff7a59;
+  --bg: #07070b;
+  --surface: #0e0e14;
+  --ink: #f4f4f7;
+  --muted: #a1a1b0;
+  --faint: #8b8b9a;
   --line: rgba(255, 255, 255, 0.08);
-  --good: #4ADE80;
-  --warn: #FAB219;
+  --good: #4ade80;
+  --warn: #fab219;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family:
+    "Geist",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: #C4B5FD; }
-a:hover { color: #DDD6FE; }
+a {
+  color: #c4b5fd;
+}
+a:hover {
+  color: #ddd6fe;
+}
 
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -36,12 +51,18 @@ a:hover { color: #DDD6FE; }
   border-radius: 6px;
 }
 
-.mono, .mono-sm { font-family: 'Geist Mono', ui-monospace, monospace; }
-.mono-sm { font-size: 12px; color: var(--muted); }
+.mono,
+.mono-sm {
+  font-family: "Geist Mono", ui-monospace, monospace;
+}
+.mono-sm {
+  font-size: 12px;
+  color: var(--muted);
+}
 
 /* Segmented buttons (chart period, viewer time zone) */
 .seg-btn {
-  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-family: "Geist Mono", ui-monospace, monospace;
   font-size: 12px;
   border: 0;
   border-radius: 7px;
@@ -51,25 +72,45 @@ a:hover { color: #DDD6FE; }
   cursor: pointer;
   background: transparent;
   color: var(--muted);
-  transition: background-color .15s, color .15s;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
 }
-.seg-btn:hover { color: var(--ink); }
-.seg-btn[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.seg-btn:hover {
+  color: var(--ink);
+}
+.seg-btn[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--bg);
+}
 
 /* Performance chart */
-.perf-chart { position: relative; cursor: crosshair; }
-.perf-svg { display: block; width: 100%; height: auto; }
+.perf-chart {
+  position: relative;
+  cursor: crosshair;
+}
+.perf-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 .tick {
   position: absolute;
-  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-family: "Geist Mono", ui-monospace, monospace;
   font-size: 11px;
   color: var(--faint);
   white-space: nowrap;
   pointer-events: none;
 }
-.tick-y { left: 6.1%; transform: translate(-100%, -50%); padding-right: 6px; }
-.tick-x { bottom: 0; }
+.tick-y {
+  left: 6.1%;
+  transform: translate(-100%, -50%);
+  padding-right: 6px;
+}
+.tick-x {
+  bottom: 0;
+}
 
 .end-label {
   position: absolute;
@@ -79,8 +120,14 @@ a:hover { color: #DDD6FE; }
   line-height: 1.2;
   pointer-events: none;
 }
-.end-label > span { font-size: 11px; color: var(--muted); }
-.end-label > strong { font-size: 13px; font-weight: 600; }
+.end-label > span {
+  font-size: 11px;
+  color: var(--muted);
+}
+.end-label > strong {
+  font-size: 13px;
+  font-weight: 600;
+}
 
 .chart-tip {
   position: absolute;
@@ -91,18 +138,39 @@ a:hover { color: #DDD6FE; }
   gap: 4px;
   padding: 10px 12px;
   font-size: 13px;
-  background: #1A1A24;
+  background: #1a1a24;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 10px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   pointer-events: none;
 }
-.chart-tip[hidden] { display: none; }
-.tip-row { display: flex; justify-content: space-between; gap: 16px; }
-.tip-row strong { font-weight: 600; }
-.tip-key { display: flex; align-items: center; gap: 6px; }
-.tip-key i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-.tip-spread { padding-top: 4px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: var(--muted); }
+.chart-tip[hidden] {
+  display: none;
+}
+.tip-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.tip-row strong {
+  font-weight: 600;
+}
+.tip-key {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tip-key i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.tip-spread {
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+}
 
 /* Market sessions table */
 .status-chip {
@@ -117,6 +185,25 @@ a:hover { color: #DDD6FE; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  * { transition: none !important; }
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+  }
+}
+
+/* Profile photo — set the path in index.html (img.avatar src).
+   The photo is cropped to a circle; tune --avatar-focus to centre the face
+   (first value = horizontal, second = vertical; lower % shows more of the top). */
+.avatar {
+  --avatar-focus: 50% 28%;
+  flex: 0 0 auto;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: var(--avatar-focus);
+  background: #1a1a24;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12);
 }
