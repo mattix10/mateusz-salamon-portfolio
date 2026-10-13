@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(claude mcp add --help)",
+      "PowerShell(claude --version; \\(Get-Command gh -ErrorAction SilentlyContinue\\).Source)",
+      "Bash(claude --version)",
+      "Bash(where.exe claude *)",
+      "Bash(gh auth *)"
+    ]
+  }
+}

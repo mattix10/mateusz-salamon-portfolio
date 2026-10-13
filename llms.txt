@@ -4,11 +4,11 @@
 
 ## Profile
 - Stack: Angular, TypeScript, JavaScript, RxJS, NgRx, NGXS, HTML5, SCSS, Jasmine, Git/GitHub, REST APIs, .NET
-- AI: Claude Code, Model Context Protocol (MCP), Skills, agentic workflows, AI-assisted unit and E2E testing
+- AI: Claude Code, Github Copilot, Codex, Model Context Protocol (MCP), Skills, agentic workflows, AI-assisted unit and E2E testing
 - Domains: cloud-based asset management platform used by banks; portfolio monitoring app for a German bank; dealer–bank financial document exchange
 - Certifications: Google UX Design, Microsoft Azure
 - Languages: Polish (native), English
-- Contact: matsal.dev@gmail.com
+- Contact: contact@salamonsoftware.com
 
 ## Pages
-- [Portfolio](https://[your-domain]/): full profile, experience, skills and FAQ
+- [Portfolio](https://salamonsoftware.com/): full profile, experience, skills and FAQ
