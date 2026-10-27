@@ -97,6 +97,10 @@ a:hover {
   display: none;
 }
 
+.mobile-nav-toggle[hidden] {
+  display: none !important;
+}
+
 .mobile-nav-toggle,
 .mobile-nav-close {
   align-items: center;

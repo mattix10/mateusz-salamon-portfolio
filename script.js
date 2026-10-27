@@ -236,8 +236,11 @@
     const dialog = document.getElementById('mobile-navigation');
     if (!toggle || !dialog || typeof dialog.showModal !== 'function') return;
 
+    const mobileViewport = window.matchMedia('(max-width: 767px)');
+    toggle.hidden = !mobileViewport.matches;
     document.documentElement.classList.add('nav-ready');
     toggle.addEventListener('click', () => {
+      if (!mobileViewport.matches) return;
       dialog.showModal();
       toggle.setAttribute('aria-expanded', 'true');
       document.documentElement.classList.add('mobile-nav-open');
@@ -255,8 +258,9 @@
       toggle.setAttribute('aria-expanded', 'false');
       document.documentElement.classList.remove('mobile-nav-open');
     });
-    window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {
-      if (event.matches && dialog.open) dialog.close();
+    mobileViewport.addEventListener('change', (event) => {
+      toggle.hidden = !event.matches;
+      if (!event.matches && dialog.open) dialog.close();
     });
   }
 
