@@ -2,6 +2,8 @@
 
 Static, dependency-free website: dark design optimised for search engines and AI assistants.
 
+SEO and performance review (27 October 2026): see [SEO_PERFORMANCE_AUDIT.md](SEO_PERFORMANCE_AUDIT.md). Local Lighthouse results: mobile Performance 95, desktop Performance 100; Accessibility, Best Practices and SEO 100 on both. Production results must be checked after deployment. Fonts are self-hosted in `assets/fonts/` under the included SIL Open Font License.
+
 ## Files
 | File | What it is |
 |---|---|

@@ -231,7 +231,37 @@
     renderSessions('Europe/Warsaw');
   }
 
+  function initMobileNavigation() {
+    const toggle = document.querySelector('.mobile-nav-toggle');
+    const dialog = document.getElementById('mobile-navigation');
+    if (!toggle || !dialog || typeof dialog.showModal !== 'function') return;
+
+    document.documentElement.classList.add('nav-ready');
+    toggle.addEventListener('click', () => {
+      dialog.showModal();
+      toggle.setAttribute('aria-expanded', 'true');
+      document.documentElement.classList.add('mobile-nav-open');
+    });
+    dialog.querySelector('.mobile-nav-close').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => {
+      if (event.target.closest('a[href^="#"]')) dialog.close();
+      if (event.target === dialog) {
+        const bounds = dialog.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right ||
+            event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+      }
+    });
+    dialog.addEventListener('close', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      document.documentElement.classList.remove('mobile-nav-open');
+    });
+    window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {
+      if (event.matches && dialog.open) dialog.close();
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
+    initMobileNavigation();
     initChart();
     initSessions();
   });

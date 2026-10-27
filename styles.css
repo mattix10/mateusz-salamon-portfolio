@@ -25,6 +25,38 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Self-hosted variable fonts preserve the design without third-party requests. */
+@font-face {
+  font-family: "Geist";
+  src: url("assets/fonts/geist-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: optional;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("assets/fonts/geist-mono-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: optional;
+}
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  transform: translateY(-150%);
+  z-index: 10;
+  padding: 12px 18px;
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 body {
   margin: 0;
   background: var(--bg);
@@ -58,6 +90,158 @@ a:hover {
 .mono-sm {
   font-size: 12px;
   color: var(--muted);
+}
+
+/* Mobile navigation: native dialog provides focus containment and Escape. */
+.mobile-nav-toggle {
+  display: none;
+}
+
+.mobile-nav-toggle,
+.mobile-nav-close {
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.mobile-nav-close {
+  display: inline-flex;
+}
+
+.mobile-nav-toggle:hover,
+.mobile-nav-close:hover {
+  background: rgba(167, 139, 250, 0.14);
+}
+
+.mobile-nav-dialog {
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: min(360px, 90vw);
+  height: 100%;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: max(20px, env(safe-area-inset-top)) 24px max(24px, env(safe-area-inset-bottom));
+  border: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: -16px 0 64px rgba(0, 0, 0, 0.35);
+  overflow-y: auto;
+}
+
+.mobile-nav-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  animation: nav-slide-in 220ms ease-out;
+}
+
+.mobile-nav-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.mobile-nav-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 24px;
+  font-weight: 600;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-nav-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.mobile-nav-links a:hover {
+  background: rgba(167, 139, 250, 0.12);
+}
+
+.mobile-nav-links .mobile-nav-contact {
+  margin-top: 20px;
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.mobile-nav-links .mobile-nav-contact:hover {
+  background: #ddd6fe;
+}
+
+.mobile-nav-note {
+  margin: auto 0 0;
+  padding: 40px 16px 0;
+  font-size: 14px;
+}
+
+.mobile-nav-note span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+html.mobile-nav-open {
+  overflow: hidden;
+}
+
+@keyframes nav-slide-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@media (max-width: 767px) {
+  #top .hero-content {
+    padding-top: 32px !important;
+    padding-bottom: 48px !important;
+    gap: 32px !important;
+  }
+
+  #skills {
+    padding-top: 32px !important;
+    scroll-margin-top: 16px;
+  }
+
+  .nav-ready .desktop-nav-links,
+  .nav-ready .desktop-nav-contact {
+    display: none !important;
+  }
+
+  .nav-ready .mobile-nav-toggle {
+    display: inline-flex;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  .nav-ready .site-nav > div {
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    padding: 14px 20px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav-dialog[open] { animation: none; }
 }
 
 /* Segmented buttons (chart period, viewer time zone) */

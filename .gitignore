@@ -5,3 +5,8 @@ node_modules/
 .DS_Store
 Thumbs.db
 *.log
+
+# Local audit outputs; keep deployment assets and audit summary in Git.
+audit-screenshots/
+lighthouse-*.report.html
+lighthouse-*.report.json
