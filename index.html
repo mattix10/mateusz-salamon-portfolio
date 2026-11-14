@@ -52,7 +52,7 @@
       type="font/woff2"
       crossorigin
     />
-    <link rel="stylesheet" href="styles.css?v=20261027-nav2" />
+    <link rel="stylesheet" href="styles.css?v=20261114-motion2" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -184,10 +184,11 @@
         ]
       }
     </script>
-    <script src="script.js?v=20261027-nav2" defer></script>
+    <script src="script.js?v=20261114-motion" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
     <div
       style="
         background: #07070b;
@@ -353,7 +354,7 @@
             background-size: 64px 64px;
           "
         >
-          <div
+          <div class="hero-glow hero-glow-a"
             style="
               position: absolute;
               top: -220px;
@@ -371,7 +372,7 @@
               pointer-events: none;
             "
           ></div>
-          <div
+          <div class="hero-glow hero-glow-b"
             style="
               position: absolute;
               bottom: -260px;
@@ -402,7 +403,7 @@
               align-items: flex-start;
             "
           >
-            <div
+            <div class="hero-copy"
               style="
                 flex: 1 1 560px;
                 min-width: 0;
@@ -424,7 +425,7 @@
                   font-size: 14px;
                   color: #d4d4dc;
                 "
-                ><span
+                ><span class="live-dot"
                   style="
                     width: 8px;
                     height: 8px;
@@ -446,13 +447,15 @@
               >
                 Mateusz Salamon — AI Consultant and Senior Frontend Developer
                 specialising in
-                <span
+                <span class="shimmer-text"
                   style="
                     background: linear-gradient(
                       90deg,
                       var(--accent),
-                      var(--accent2)
+                      var(--accent2),
+                      var(--accent)
                     );
+                    background-size: 200% 100%;
                     -webkit-background-clip: text;
                     background-clip: text;
                     color: transparent;
@@ -473,7 +476,7 @@
                 roles in finance, insurance and other industries.
               </p>
               <div style="display: flex; flex-wrap: wrap; gap: 12px">
-                <a
+                <a class="btn-lift"
                   href="#contact"
                   style="
                     text-decoration: none;
@@ -485,7 +488,7 @@
                   "
                   >Get in touch</a
                 >
-                <a
+                <a class="btn-lift"
                   href="https://linkedin.com/in/-mateusz-salamon"
                   target="_blank"
                   style="
@@ -504,7 +507,7 @@
               </p>
             </div>
 
-            <aside
+            <aside class="hero-card"
               id="profile"
               aria-label="Profile at a glance"
               style="
@@ -816,7 +819,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
           "
         >
-          <div
+          <div class="tech-strip" data-reveal-stagger="pop"
             style="
               max-width: 1200px;
               margin: 0 auto;
@@ -981,7 +984,7 @@
             gap: 44px;
           "
         >
-          <div
+          <div data-reveal="up"
             style="
               display: flex;
               flex-direction: column;
@@ -1011,7 +1014,7 @@
               You're in the right place if you need…
             </h2>
           </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 16px">
+          <div class="card-grid" data-reveal-stagger="up" style="display: flex; flex-wrap: wrap; gap: 16px">
             <div
               style="
                 flex: 1 1 340px;
@@ -1230,7 +1233,7 @@
             gap: 48px;
           "
         >
-          <div
+          <div data-reveal="up"
             style="
               display: flex;
               flex-direction: column;
@@ -1260,7 +1263,7 @@
               What you get is not just code. It's time back.
             </h2>
           </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 16px">
+          <div class="card-grid" data-reveal-stagger="up" style="display: flex; flex-wrap: wrap; gap: 16px">
             <div
               style="
                 flex: 1 1 250px;
@@ -1417,7 +1420,7 @@
             align-items: flex-start;
           "
         >
-          <div
+          <div data-reveal="up"
             style="
               flex: 1 1 320px;
               min-width: 0;
@@ -1469,7 +1472,7 @@
                 "
                 >Soft skills</span
               >
-              <div style="display: flex; flex-wrap: wrap; gap: 8px">
+              <div data-reveal-stagger="pop" style="display: flex; flex-wrap: wrap; gap: 8px">
                 <span
                   style="
                     background: #0e0e14;
@@ -1524,7 +1527,7 @@
             </div>
           </div>
           <div style="flex: 2 1 600px; min-width: 0; overflow-x: auto">
-            <table
+            <table data-reveal-stagger="left"
               style="
                 width: 100%;
                 min-width: 560px;
@@ -1799,7 +1802,7 @@
               padding: 72px 0;
             "
           >
-            <div
+            <div data-reveal="left"
               style="
                 flex: 1 1 380px;
                 min-width: 0;
@@ -1859,7 +1862,7 @@
                 </li>
               </ul>
             </div>
-            <div
+            <div data-reveal="right"
               style="
                 flex: 1.4 1 520px;
                 min-width: 0;
@@ -2076,7 +2079,7 @@
                     >share of NAV</span
                   >
                 </div>
-                <div style="display: flex; gap: 2px; height: 12px">
+                <div data-reveal-stagger="bars" style="display: flex; gap: 2px; height: 12px">
                   <span
                     title="Equities 46.2%"
                     style="
@@ -2247,7 +2250,7 @@
               border-top: 1px solid rgba(255, 255, 255, 0.08);
             "
           >
-            <div
+            <div data-reveal="left"
               style="
                 flex: 1.4 1 520px;
                 min-width: 0;
@@ -2280,7 +2283,7 @@
                   >demo data</span
                 >
               </div>
-              <div
+              <div data-reveal-stagger="pop"
                 style="
                   display: flex;
                   align-items: center;
@@ -2333,7 +2336,7 @@
                     font-size: 14px;
                     white-space: nowrap;
                   "
-                  ><span style="color: var(--accent)">◐</span>Order</span
+                  ><span class="pulse-soft" style="color: var(--accent)">◐</span>Order</span
                 >
                 <span
                   style="
@@ -2354,7 +2357,7 @@
                 >
               </div>
               <div style="overflow-x: auto">
-                <table
+                <table data-reveal-stagger="left"
                   style="
                     width: 100%;
                     min-width: 500px;
@@ -2696,7 +2699,7 @@
                   </tbody>
                 </table>
               </div>
-              <div
+              <div data-reveal="shake"
                 style="
                   display: flex;
                   gap: 10px;
@@ -2716,7 +2719,7 @@
                 >
               </div>
             </div>
-            <div
+            <div data-reveal="right"
               style="
                 flex: 1 1 380px;
                 min-width: 0;
@@ -2790,7 +2793,7 @@
               border-top: 1px solid rgba(255, 255, 255, 0.08);
             "
           >
-            <div
+            <div data-reveal="left"
               style="
                 flex: 1 1 380px;
                 min-width: 0;
@@ -2849,7 +2852,7 @@
                 </li>
               </ul>
             </div>
-            <div
+            <div data-reveal="right"
               style="
                 flex: 1.4 1 520px;
                 min-width: 0;
@@ -3040,7 +3043,7 @@
             flex-direction: column;
           "
         >
-          <div
+          <div data-reveal="up"
             style="
               display: flex;
               flex-direction: column;
@@ -3081,7 +3084,7 @@
               padding: 64px 0 72px;
             "
           >
-            <div
+            <div data-reveal="up"
               style="
                 display: flex;
                 flex-wrap: wrap;
@@ -3126,7 +3129,7 @@
                 senior quality, delivered faster.
               </p>
             </div>
-            <div
+            <div class="flow" data-reveal-stagger="pop"
               style="
                 display: flex;
                 flex-wrap: wrap;
@@ -3211,7 +3214,7 @@
                 merge</span
               >
             </div>
-            <div style="display: flex; flex-wrap: wrap; gap: 16px">
+            <div class="card-grid" data-reveal-stagger="up" style="display: flex; flex-wrap: wrap; gap: 16px">
               <div
                 style="
                   flex: 1 1 320px;
@@ -3600,7 +3603,7 @@
               border-top: 1px solid rgba(255, 255, 255, 0.08);
             "
           >
-            <div
+            <div data-reveal="left"
               style="
                 flex: 1.4 1 520px;
                 min-width: 0;
@@ -3640,7 +3643,7 @@
                   background: rgba(255, 255, 255, 0.08);
                 "
               >
-                <div
+                <div data-reveal="bars"
                   style="
                     width: 55%;
                     height: 6px;
@@ -3653,7 +3656,7 @@
                   "
                 ></div>
               </div>
-              <div style="display: flex; flex-direction: column">
+              <div data-reveal-stagger="left" style="display: flex; flex-direction: column">
                 <div
                   style="
                     display: flex;
@@ -3759,7 +3762,7 @@
                       >Agents read tasks and components directly</span
                     >
                   </div>
-                  <span
+                  <span class="pulse-soft"
                     style="
                       color: var(--accent);
                       font-size: 13px;
@@ -3806,7 +3809,7 @@
                 </div>
               </div>
             </div>
-            <div
+            <div data-reveal="right"
               style="
                 flex: 1 1 380px;
                 min-width: 0;
@@ -3882,7 +3885,7 @@
             gap: 36px;
           "
         >
-          <div
+          <div data-reveal="up"
             style="
               display: flex;
               flex-wrap: wrap;
@@ -3922,7 +3925,7 @@
               </h2>
             </div>
           </div>
-          <ol
+          <ol data-reveal-stagger="left"
             style="
               margin: 0;
               padding: 0;
@@ -4266,7 +4269,7 @@
             gap: 28px;
           "
         >
-          <h2
+          <h2 data-reveal="up"
             style="
               margin: 0;
               font-weight: 600;
@@ -4276,7 +4279,7 @@
           >
             Certified across design and cloud
           </h2>
-          <div style="display: flex; flex-wrap: wrap; gap: 16px">
+          <div class="card-grid" data-reveal-stagger="scale" style="display: flex; flex-wrap: wrap; gap: 16px">
             <div
               style="
                 flex: 1 1 320px;
@@ -4416,7 +4419,7 @@
             gap: 40px;
           "
         >
-          <div
+          <div data-reveal="up"
             style="
               display: flex;
               flex-direction: column;
@@ -4447,7 +4450,7 @@
             </h2>
           </div>
           <div style="display: flex; flex-wrap: wrap; gap: 0 48px">
-            <div
+            <div class="faq-list" data-reveal-stagger="up"
               style="
                 flex: 1 1 460px;
                 min-width: 0;
@@ -4532,7 +4535,7 @@
                 </p>
               </div>
             </div>
-            <div
+            <div class="faq-list" data-reveal-stagger="up"
               style="
                 flex: 1 1 460px;
                 min-width: 0;
@@ -4627,7 +4630,7 @@
             gap: 40px;
           "
         >
-          <div
+          <div data-reveal="up"
             style="
               display: flex;
               flex-direction: column;
@@ -4657,7 +4660,7 @@
               Join your team, or deliver a project.
             </h2>
           </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 16px">
+          <div class="card-grid" data-reveal-stagger="up" style="display: flex; flex-wrap: wrap; gap: 16px">
             <div
               style="
                 flex: 1 1 380px;
@@ -4702,7 +4705,7 @@
                   ><strong style="font-weight: 600">Best for:</strong> product
                   teams building financial or data-heavy apps</span
                 >
-                <a
+                <a class="link-arrow"
                   href="#contact"
                   style="
                     margin-top: auto;
@@ -4744,7 +4747,7 @@
                 ><strong style="font-weight: 600">Best for:</strong> a new
                 feature or a stuck initiative</span
               >
-              <a
+              <a class="link-arrow"
                 href="#contact"
                 style="
                   margin-top: auto;
@@ -4763,7 +4766,7 @@
           id="contact"
           style="max-width: 1200px; margin: 0 auto; padding: 100px 24px 80px"
         >
-          <div
+          <div data-reveal="scale"
             style="
               position: relative;
               overflow: hidden;
@@ -4772,7 +4775,7 @@
               background: #0e0e14;
             "
           >
-            <div
+            <div class="contact-glow"
               style="
                 position: absolute;
                 top: -200px;
@@ -4791,7 +4794,7 @@
                 pointer-events: none;
               "
             ></div>
-            <div
+            <div data-reveal-stagger="up"
               style="
                 position: relative;
                 padding: clamp(40px, 7vw, 96px) clamp(24px, 5vw, 64px);
@@ -4835,7 +4838,7 @@
                   margin-top: 8px;
                 "
               >
-                <a
+                <a class="btn-lift"
                   href="mailto:contact@salamonsoftware.com"
                   style="
                     text-decoration: none;
@@ -4847,7 +4850,7 @@
                   "
                   >Email me</a
                 >
-                <a
+                <a class="btn-lift"
                   href="https://www.linkedin.com/in/-mateusz-salamon/?locale=en_US"
                   target="_blank"
                   rel="noopener"
@@ -4867,7 +4870,7 @@
         </section>
       </main>
       <footer style="border-top: 1px solid rgba(255, 255, 255, 0.08)">
-        <div
+        <div data-reveal="fade"
           style="
             max-width: 1200px;
             margin: 0 auto;

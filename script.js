@@ -1,6 +1,7 @@
 // Mateusz Sal — portfolio · interactive demo widgets
 // 1) Portfolio vs benchmark chart (period switch + hover tooltip)
 // 2) Market sessions table (viewer time-zone switch)
+// 3) Motion: scroll reveal ([data-reveal] in index.html), scroll progress bar, card spotlight
 // All numbers are generated demo data.
 
 (function () {
@@ -154,6 +155,7 @@
       btn.addEventListener('click', () => {
         document.querySelectorAll('[data-range]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
         render(btn.dataset.range);
+        replayChartWipe();
       });
     });
 
@@ -264,7 +266,77 @@
     });
   }
 
+  /* ---------- 3. Motion: scroll reveal, progress bar, card spotlight ---------- */
+
+  const prefersCalm = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function initMotion() {
+    const bar = document.querySelector('.scroll-progress');
+    const targets = Array.from(document.querySelectorAll('[data-reveal], [data-reveal-stagger]'));
+    const canReveal = !prefersCalm() && 'IntersectionObserver' in window;
+    let io = null;
+
+    const revealAll = () => {
+      targets.forEach((el) => el.classList.add('is-in'));
+      if (io) io.disconnect();
+    };
+
+    if (canReveal) {
+      // Stagger children: each one gets its position as --i for the CSS delay.
+      targets.forEach((el) => {
+        if (!el.hasAttribute('data-reveal-stagger')) return;
+        const items = el.tagName === 'TABLE' ? el.rows : el.children;
+        Array.from(items).forEach((item, i) => item.style.setProperty('--i', Math.min(i, 12)));
+      });
+      io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -40px 0px' });
+      targets.forEach((el) => io.observe(el));
+      document.documentElement.classList.add('motion-ready');
+    }
+
+    // Progress bar + make sure nothing stays hidden at the very bottom of the page.
+    let ticking = false;
+    const onScroll = () => {
+      ticking = false;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      if (bar) bar.style.transform = `scaleX(${progress})`;
+      if (io && progress > 0.995) revealAll();
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+    }, { passive: true });
+    onScroll();
+
+    // Spotlight that follows the cursor inside cards.
+    if (canReveal && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.addEventListener('pointermove', (e) => {
+        const card = e.target instanceof Element && e.target.closest('.card-grid > *');
+        if (!card) return;
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      }, { passive: true });
+    }
+  }
+
+  // Redraw the chart lines from the left after a period switch.
+  function replayChartWipe() {
+    const svg = document.querySelector('#perf-chart .perf-svg');
+    if (!svg || typeof svg.animate !== 'function' || prefersCalm()) return;
+    svg.animate(
+      [{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0 0 0)' }],
+      { duration: 700, easing: 'cubic-bezier(0.65, 0, 0.35, 1)' }
+    );
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
+    initMotion();
     initMobileNavigation();
     initChart();
     initSessions();
